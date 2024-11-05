@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en-US" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="utf-8">
+	</meta>
+	<meta http-equiv="Content-Type" content="text/html">
+	<link rel="stylesheet" href="/style.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	</meta>
+	<title>Regiones</title>
+</head>
+
+<body>
+	<div>
+		<h1>LISTA DE Regiones</h1>
+		<table>
+			<tr>
+				<th>ID</th>
+				<th>Nombre</th>
+			</tr>
+			<tr th:each="region : ${regiones}">
+				<td class="id" th:text="${region.id}"></td>
+				<td class="nombre" th:text="${region.nombre}"></td>
+			</tr>
+		</table>
+		<br>
+		<a th:href="@{/region/insertar}">Agregar Region</a><br />
+		<a th:href="@{/}">Ir al inicio</a>
+	</div>
+</body>
+
+</html>

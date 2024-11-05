@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en-US" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="utf-8">
+	</meta>
+	<meta http-equiv="Content-Type" content="text/html">
+	<link rel="stylesheet" href="/style.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	</meta>
+	<title>Sedes</title>
+</head>
+
+<body>
+	<div>
+		<h1>LISTA DE Sedes</h1>
+		<table>
+			<tr>
+				<th>ID</th>
+				<th>Nombre</th>
+				<th>Provincia</th>
+				<th>Canton</th>
+				<th>Distrito</th>
+				<th>Apertura</th>
+				<th>Region</th>
+				<th>Opción</th>
+			</tr>
+			<tr>
+			<tr th:each="sede : ${sedes}">
+				<td th:text="${sede.id}" class="ID"></td>
+				<td th:text="${sede.nombre}"></td>
+			    <td th:text="${sede.provincia}"></td>
+			    <td th:text="${sede.canton}"></td>
+			    <td th:text="${sede.distrito}"></td>
+				<td th:text="${sede.apertura}"></td>
+				<td>
+					<!-- <select th:field="*{id_categoria}"> -->
+					<select name="id_region" id="id_region">
+						<option th:each="region : ${regiones}" th:value="${region.id}" th:text="${region.nombre}" th:selected="${region.id==sede.id_region}" disabled>
+						</option>
+					</select>
+				</td>
+				<td>
+					<a th:href="@{/sedes/editar/{id}(id= ${sede.id})}">Modificar</a>
+					<a th:href="@{/sedes/borrar/{id}(id= ${sede.id})}">Borrar</a>
+				</td>
+			</tr>
+		</table>
+		<br>
+		<a th:href="@{/sedes/insertar}">Agregar sedes</a><br />
+		<a th:href="@{/}">Ir al inicio</a>
+	</div>
+</body>
+
+</html>

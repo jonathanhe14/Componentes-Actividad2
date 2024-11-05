@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en-US" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    </meta>
+    <meta http-equiv="Content-Type" content="text/html">
+    </meta>
+    <link rel="stylesheet" href="/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear</title>
+</head>
+
+<body>
+    Insertar:
+    <form action="#" th:action="@{/sedes/insertar}" th:object="${sede}" method="post">
+        <label for="nombre">Nombre</label>
+        <input type="text" th:field="*{nombre}" id="nombre"><br />
+        <label for="provincia">Provincia</label>
+        <input type="text" th:field="*{provincia}" id="provincia"><br />
+        <label for="canton">Canton</label>
+        <input type="text" th:field="*{canton}" id="canton"><br />
+        <label for="distrito">Distrito</label>
+        <input type="text" th:field="*{distrito}" id="distrito"><br />
+        <label for="apertura">Apertura</label>
+        <input type="number" th:field="*{apertura}" id="apertura"><br />
+        <label for="id_region">Categoría: </label>
+        <!-- <select th:field="*{id_categoria}" id="id_categoria"> -->
+        <select name="id_region" id="id_region">
+            <!-- <select> -->
+                <option></option>
+            <option th:each="region : ${regiones}" th:value="${region.id}" th:text="${region.nombre}">
+            </option>
+        </select>
+        <input type="submit" value="Agregar Sede">
+    </form>
+    <a th:href="@{/}">Ir al inicio</a>
+</body>
+
+</html>

@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en-US" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8"></meta>
+<meta http-equiv="Content-Type" content="text/html"></meta>
+<link rel="stylesheet" href="/style.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Crear</title>
+</head>
+<body>
+Insertar:
+<form action="#" th:action="@{/region/insertar}" th:object="${region}" method="post">
+    <label for="nombre">Nombre</label>
+    <input type="text" th:field="*{nombre}" id="nombre"><br/>
+     <input type="submit" value="Agregar Region">
+</form>
+<a th:href="@{/}">Ir al inicio</a>
+</body>
+</html>

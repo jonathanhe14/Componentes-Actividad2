@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en-US" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css">
+    <title>Insertar Libro</title>
+</head>
+
+<body>
+<h1>Insertar Libro</h1>
+<form th:action="@{libro/insertar}" th:object="${libro}" method="post">
+    <label for="titulo">Título</label>
+    <input type="text" th:field="*{titulo}" id="titulo" required><br />
+
+    <label for="autor">Autor</label>
+    <input type="text" th:field="*{autor}" id="autor" required><br />
+
+    <label for="publicacion">Año de publicación</label>
+    <input type="number" th:field="*{publicacion}" id="publicacion" required><br />
+
+    <label for="editorial">Editorial</label>
+    <input type="text" th:field="*{editorial}" id="editorial" required><br />
+
+    <label for="edicion">Edición</label>
+    <input type="text" th:field="*{edicion}" id="edicion" required><br />
+
+    <input type="submit" value="Agregar Libro">
+</form>
+<a th:href="@{/static}">Ir al inicio</a>
+</body>
+
+</html>

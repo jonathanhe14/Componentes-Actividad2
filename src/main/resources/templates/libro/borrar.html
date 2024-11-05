@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css">
+    <title>Borrado</title>
+</head>
+<body>
+<h1>Borrar libro</h1>
+<form th:action="@{/libro/borrar/{id}(id=${libro.id})}" th:object="${libro}" method="post">
+    <p>¿Desea borrar el libro <span th:text="${libro.titulo}">Titulo</span>?</p>
+    <input type="submit" value="Sí, borrar">
+</form>
+<a th:href="@{/}">Ir al inicio</a>
+</body>
+</html>

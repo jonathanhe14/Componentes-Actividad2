@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en-US" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    </meta>
+    <meta http-equiv="Content-Type" content="text/html">
+    </meta>
+    <link rel="stylesheet" href="/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar</title>
+</head>
+
+<body>
+    Editar:
+    <form action="#" th:action="@{/sedes/editar/{id}(id=${id})}" th:object="${sede}" method="post">
+        <label for="nombre">Nombre</label>
+        <input type="text" th:field="*{nombre}" id="nombre"><br />
+        <label for="provincia">Provincia</label>
+        <input type="text" th:field="*{provincia}" id="provincia"><br />
+        <label for="canton">Canton</label>
+        <input type="text" th:field="*{canton}" id="canton"><br />
+        <label for="distrito">Distrito</label>
+        <input type="text" th:field="*{distrito}" id="distrito"><br />
+        <label for="apertura">Apertura: </label>
+        <input type="text" th:field="*{apertura}" id="apertura">
+        <label for="id_region">Categoría: </label>
+        <!-- <select th:field="*{id_categoria}" id="id_categoria"> -->
+        <select name="id_region" id="id_region" th:selected="${sede.id_region}">
+            <!-- <select> -->
+            <option th:each="region : ${region}" th:value="${region.id}" th:text="${region.nombre}" th:selected="${region.id==sede.id_region}">
+            </option>
+        </select>
+        <input type="submit" value="Guardar Sede">
+    </form>
+
+    <!-- <div th:each="categoria : ${categorias}">
+        <p th:text="${categoria.nombre}"></p>
+    </div> -->
+    <a th:href=" @{/}">Ir al inicio</a>
+</body>
+
+</html>

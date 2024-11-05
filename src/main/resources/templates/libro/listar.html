@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en-US" xmlns:th="http://www.thymeleaf.org">
+
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="/style.css">
+	<title>Lista de Libros</title>
+</head>
+
+<body>
+<div>
+	<h1>Lista de Libros</h1>
+	<table>
+		<tr>
+			<th>Título</th>
+			<th>Autor</th>
+			<th>Año de Publicación</th>
+			<th>Editorial</th>
+			<th>Edición</th>
+			<th>Opción</th>
+		</tr>
+		<tr th:each="libro : ${libros}">
+			<td th:text="${libro.titulo}">Título</td>
+			<td th:text="${libro.autor}">Autor</td>
+			<td th:text="${libro.publicacion}">Año de Publicación</td>
+			<td th:text="${libro.editorial}">Editorial</td>
+			<td th:text="${libro.edicion}">Edición</td>
+			<td>
+				<a th:href="@{/libro/editar/{id}(id=${libro.id})}">Modificar</a>
+				<span> | </span>
+				<a th:href="@{/libro/borrar/{id}(id=${libro.id})}">Borrar</a>
+			</td>
+		</tr>
+		<tr th:if="${#lists.isEmpty(libros)}">
+			<td colspan="6">No hay libros disponibles.</td>
+		</tr>
+	</table>
+	<a th:href="@{/libro/insertar}">Agregar Libro</a>
+	<span> | </span>
+	<a th:href="@{/}">Ir al inicio</a>
+</div>
+</body>
+
+</html>
